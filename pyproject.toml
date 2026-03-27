@@ -1,0 +1,75 @@
+[build-system]
+requires = [
+    "hatchling"
+]
+
+build-backend = "hatchling.build"
+
+
+
+[project]
+name = "cb_jep106"
+
+description = "Chriesibaum's JEP106 tool box"
+
+readme = "README.md"
+
+authors = [{ name="Thomas", email="Thomas@chriesibaum.dev" }]
+
+requires-python = ">=3.12"
+
+license = { text="Apache-2.0" }
+
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+dynamic = [
+    "version"
+]
+
+dependencies = [
+        "pymupdf",
+]
+
+[project.optional-dependencies]
+dev = [
+    "autopep8",
+    "bandit",
+    "coverage",
+    "flake8",
+    "genbadge[all]",
+    "hatch",
+    "pycodestyle",
+    "pytest",
+]
+
+
+[project.urls]
+Homepage = "https://github.com/chriesibaum/cb_jep106"
+Documentation = "https://chriesibaum.github.io/cb_jep106"
+Repository = "https://github.com/chriesibaum/cb_jep106"
+
+
+[tool.hatch.version]
+path = "./cb_jep106/__init__.py"
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["cb_jep106/",
+            "cb_jep106_tools/"]
+
+
+[project.scripts]
+cb_jep106_converter = "cb_jep106_tools.cb_jep106_converter:main"
+
+
+[tool.coverage.report]
+omit = [
+    # omit this files
+    ]
+
+[tool.bandit.assert_used]
+skips = ['*_test.py', '*/test_*.py', '**/test_*.py']
