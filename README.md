@@ -11,13 +11,33 @@ Chriesibaum's JEP106 Tool Box
 
 </h1>
 
-A toolbox that parses the Standard Manufacturer’s
-Identification Code (JEP106) and converts the content into a machine-readable file like a CSV or JSON. It is entirely written in Python.
+A python library and toolbox that parses the Standard Manufacturer’s
+Identification Code (JEP106) and converts the content into a machine-readable file like a CSV or JSON.
+
+The data can also be easily used in Python projects by utilizing the Python class Jep106Db()
+
+It is entirely written in Python.
 
 # Installation
-
 ```bash
 pip install -e .
+```
+
+# Example
+```python
+from cb_jep106 import Jep106Db
+
+jep106 = Jep106Db()
+print(jep106.get_manufacturer(0x001))
+print(jep106.get_manufacturer(0x020))
+print(jep106.get_manufacturer(0x23b))
+```
+
+This outputs the following text:
+```bash
+AMD
+STMicroelectronics
+ARM Ltd
 ```
 
 # CLI Usage
